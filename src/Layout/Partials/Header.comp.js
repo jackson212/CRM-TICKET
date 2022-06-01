@@ -1,6 +1,8 @@
 import React from 'react'
 import { Nav, Navbar } from 'react-bootstrap'
 import logo from "../../assets/img/logo.jpg";
+import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
      <Navbar
@@ -18,13 +20,13 @@ export const Header = () => {
      
       <Navbar.Collapse id="basic-navbar-nav">
          <Nav className="ms-auto">
-             <Nav.Link  href ="/dashboard">dashboard</Nav.Link>
-             <Nav.Link href ="/dashboard">Ticket</Nav.Link>
+             <Link  to ="/dashboard">dashboard</Link>
+             <Link to ="/dashboard">Ticket</Link>
              
          </Nav>
          <Nav className=  "ms-auto">
              
-             <Nav.Link href ="/dashboard" >Logout</Nav.Link>
+             <Link to ="/dashboard" >Logout</Link>
          </Nav>
 
       </Navbar.Collapse>

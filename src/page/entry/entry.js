@@ -81,14 +81,14 @@ const handleOnsubmitUpdate=(e)=>{
      
       password={password}
       handleOnsubmit={handleOnsubmit}
-      loadon={handlePageload}/>
+      loadonn={handlePageload}/>
      
   )}
         { pageload=="reset"&&(
     <Forgot handleOnchange={handleOnchange}
       email={email} 
       handleOnsubmit={handleOnsubmitUpdate}
-      loadon={handlePageload}/>
+      loadonn={handlePageload}/>
       
   )}
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
-import PropTypes from 'prop-types';
 
-export const Forgot = ({handleOnchange,email,handleOnsubmit, loadon}) => {
+
+
+export const Forgot = ({handleOnchange,email,handleOnsubmit, loadonn}) => {
   return (
     <Container>
 
@@ -37,24 +38,10 @@ export const Forgot = ({handleOnchange,email,handleOnsubmit, loadon}) => {
       </Row>
       <Row>
           <Col>
-             <a href ="!#" onClick={()=>loadon("login")}> Log back</a>         
+             <a href ="!#" onClick={()=>loadonn("login")}> Log back</a>         
           </Col>
       </Row>
     </Container>
    
   );
 };
-
-Forgot.propTypes={
-
-  handleOnchange: PropTypes.func.isRequired,
-  handleOnsubmit: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
- 
-
-};
-
-
-
-
-

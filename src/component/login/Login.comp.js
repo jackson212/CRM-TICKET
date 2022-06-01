@@ -2,7 +2,7 @@ import React from 'react'
 import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 
-export const Login = ({handleOnchange,password,handleOnsubmit,}) => {
+export const Login = ({handleOnchange,password,handleOnsubmit,email,loadonn}) => {
   return (
     <Container>
 
@@ -53,7 +53,7 @@ export const Login = ({handleOnchange,password,handleOnsubmit,}) => {
       </Row>
       <Row>
           <Col>
-             <a href ="!#"  onClick={()=> loadon('reset')}>forget password</a>         
+             <a href ="!#"  onClick={()=> loadonn('reset')}>forget password</a>         
           </Col>
       </Row>
     </Container>
@@ -67,7 +67,7 @@ Login.propTypes={
   handleOnsubmit: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
-  loadon:PropTypes.func.isRequired,
+  loadonn:PropTypes.func.isRequired,
   
   
 
