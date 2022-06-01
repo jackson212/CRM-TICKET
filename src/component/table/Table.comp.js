@@ -2,6 +2,7 @@ import React from 'react'
 import {Table} from 'react-bootstrap'
 
 export const Tablecomp = ({ticket}) => {
+  
   return (
     
      <Table striped bordered hover>

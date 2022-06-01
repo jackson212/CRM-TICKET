@@ -2,7 +2,7 @@ import React from 'react'
 import { Container,Row,Col,Form ,Button} from 'react-bootstrap'
 import PropTypes from 'prop-types';
 
-export const Login = ({handleOnchange,email,password,handleOnsubmit, loadon}) => {
+export const Login = ({handleOnchange,password,handleOnsubmit,}) => {
   return (
     <Container>
 

@@ -4,10 +4,17 @@ import { Tablecomp } from '../../component/table/Table.comp';
 
 import ticket from '../../assets/data/dummy-ticket.json'
 
+import { PageBreadcrumb } from '../../component/breadcrumb/Breadcrumb.comp';
 export const Dashboard = () => {
   return (
     
     <Container>
+      <Row>
+        <Col>
+            <PageBreadcrumb page ="dashboard" />
+        </Col>
+
+        </Row>
 
      <Row>
          <Col className="text-center mt-5 md-2">

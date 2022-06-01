@@ -8,10 +8,10 @@ export const DefaultLayout = ({children}) => {
  
           
        <div className="deafult">
-             <div className="header">
+             <header className="header mb-4">
 
                  <Header/>
-                </div>
+                </header>
                  
                 <main className="main">{children}</main>
 
