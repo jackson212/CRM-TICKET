@@ -2,16 +2,38 @@ import React, { useEffect, useState } from 'react'
 import { Container, Row ,Col, Button } from 'react-bootstrap'
 import { PageBreadcrumb } from '../../component/breadcrumb/Breadcrumb.comp'
 import tickets from    '../../assets/data/dummy-ticket.json'
-import { Message } from '../../component/MessageHistory/Message.comp'
+import { MessageHistory } from '../../component/MessageHistory/Message.comp'
 import { TicketUpdate } from '../../component/ticketUpdate/TicketUpdate.comp'
-const ticket = tickets[0]
+import { useParams } from 'react-router-dom'
+
+// const ticket = tickets[0]
 export const Ticket = () => {
 
+    const {td}=useParams();
+  
     
-   
+         
      const [message,setmessage]= useState('')
+      
+     const [ticket,setticket]=useState('')
 
-     useEffect( ()=>{} ,[message])
+     
+
+     useEffect( ()=>{
+         for(let i=0;i<tickets.length;i++)
+         {
+
+            if(tickets[i].id==td){
+
+              setticket(tickets[i])
+              continue;
+
+            }
+
+         }
+
+     } ,[message,td]
+     )
  
     const handlOnchange =e=>{
 
@@ -22,9 +44,8 @@ export const Ticket = () => {
     }
     const handlOnsubmit =(e)=>{
       console.log(message)
-     
+      
     
-     
     }
   return (
     <div>
@@ -37,7 +58,8 @@ export const Ticket = () => {
      </Row>
      <Row>
          <Col className="text-weight-bolder   text-secondary">
-          <div className="subject">{ticket.sub } </div>
+           {td}
+          <div className="subject">{ticket.subject } </div>
           <div className="subject">{ticket.addededat}</div>
           <div className="subject"> {ticket.status } </div>
          </Col>
@@ -50,7 +72,8 @@ export const Ticket = () => {
 
       <Row className="mt-4"> 
       <Col>
-        <Message msg={ticket.history}/>
+      {ticket.history&& <MessageHistory msg={ticket.history}/>}
+       
       </Col>
         
         </Row> 

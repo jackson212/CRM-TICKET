@@ -18,6 +18,7 @@ export const AddTicket= () => {
    
     
     const [ sub ,CreateSubject]= useState(intitial)
+    
     useEffect(()=>{},[sub]);
   
   

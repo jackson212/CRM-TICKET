@@ -1,0 +1,43 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+ 
+
+} from 'react-router-dom';
+function App() {
+  return (
+    <div className="App">
+    <Router> 
+    <Routes>
+    <Route exact path="/" element={<Entry/>}> </Route>
+      </Routes>
+   
+    <DefaultLayout>
+    <Routes>
+    
+       
+          <PrivateRoute path="/addticket" element={<AddTicket/>}>
+       
+       </PrivateRoute>
+       <PrivateRoute path="/dashboard" element={  <Dashboard/> }> </PrivateRoute>
+        
+       <PrivateRoute  path="/TicketListing" element={  <TicketListing/> }>
+       
+       </PrivateRoute>
+       <PrivateRoute path="/ticket:td" element={  <Ticket/> }>
+       
+       </PrivateRoute>
+        
+         
+       
+        </Routes>
+        </DefaultLayout>
+    </Router>
+     
+    
+    </div>
+  );
+}
+
+export default App;

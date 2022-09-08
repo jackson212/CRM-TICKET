@@ -2,7 +2,7 @@
     
     {
     "id":1,
-    "sub":"emsil moie",
+    "subject":"emsil moie",
     "status":"client respnce pending",
     "addededat":"2020-09-04",
     "history":[
@@ -19,6 +19,12 @@
         "messageby":"server"
 
 
+      },{
+        "date":"1/3/44",
+        "message":"ok i rejected it  ",
+        "messageby":"client"
+
+
       }
       
     ]
@@ -27,35 +33,35 @@
   },
   {
     "id":2,
-    "sub":"issue with",
+    "subject":"issue with",
     "status":"client respnce pending",
     "addededat":"2020-09-04"
 
   },
   {
     "id":3,
-    "sub":"jokning on a car",
+    "subject":"jokning on a car",
     "status":"client respnce pending",
     "addededat":"2020-09-04"
 
   },
   {
     "id":4,
-    "sub":"i need tea",
+    "subject":"i need tea",
     "status":"client respnce pending",
     "addededat":"2020-09-04"
 
   },
   {
     "id":5,
-    "sub":"i need food",
+    "subject":"i need food",
     "status":"client respnce pending",
     "addededat":"2020-09-04"
 
   },
   {
     "id":6,
-    "sub":"jackson needed",
+    "subject":"jackson needed",
     "status":"client respnce pending",
     "addededat":"2020-09-04"
 

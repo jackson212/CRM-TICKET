@@ -1,3 +1,4 @@
+import PrivateRoute from './component/privaterouter/PrivateRoute.comp'
 import {DefaultLayout} from './Layout/Default.Layout'
 import { Dashboard } from './page/dashboard/dashboard.comp';
 import {AddTicket} from './page/new-ticket/AddTicket.page'
@@ -22,21 +23,19 @@ function App() {
    
     <DefaultLayout>
     <Routes>
+      <Route element={<PrivateRoute/>}>
+        
+            
+            
+            <Route  element={<Dashboard/>} path="/dashboard"  /> 
+            <Route  element={<Ticket/>} path="/ticket/:td"  /> 
+            <Route  element={<TicketListing/>} path="/tickets"  /> 
+            <Route  element={<AddTicket/>} path="/add-ticket"  /> 
+            
+
+        
+         </Route>
     
-       
-          <Route path="/addticket" element={<AddTicket/>}>
-       
-       </Route>
-       <Route path="/dashboard" element={  <Dashboard/> }> </Route>
-        
-       <Route path="/TicketListing" element={  <TicketListing/> }>
-       
-       </Route>
-       <Route path="/ticket:td" element={  <Ticket/> }>
-       
-       </Route>
-        
-         
        
         </Routes>
         </DefaultLayout>

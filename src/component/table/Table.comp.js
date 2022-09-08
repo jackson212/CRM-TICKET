@@ -1,5 +1,6 @@
 import React from 'react'
 import {Table} from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 export const Tablecomp = ({ticket}) => {
   
@@ -23,7 +24,11 @@ export const Tablecomp = ({ticket}) => {
                  
                  <tr key={row.id}> 
                    <td>{row.id}</td>
-                   <td>{row.sub}</td>
+                   <td>
+                   <Link to ={`/ticket/${row.id}`}> 
+                   {row.subject}
+                   </Link>
+                   </td>
                    <td>{row.status}</td>
                    <td>{row.addededat}</td>
                </tr>

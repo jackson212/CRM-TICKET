@@ -5,6 +5,7 @@ import { Tablecomp } from '../../component/table/Table.comp';
 import ticket from '../../assets/data/dummy-ticket.json'
 
 import { PageBreadcrumb } from '../../component/breadcrumb/Breadcrumb.comp';
+import { Link } from 'react-router-dom';
 export const Dashboard = () => {
   return (
     
@@ -18,10 +19,12 @@ export const Dashboard = () => {
 
      <Row>
          <Col className="text-center mt-5 md-2">
+           <Link to= "/add-ticket">
            <Button 
            style={{fontSize: "2rem", padding:"10px 30px"}}
            
-           > ticekt info</Button>
+           > ADD TICKET</Button>
+            </Link>
          </Col>
      </Row>
 

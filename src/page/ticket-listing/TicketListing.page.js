@@ -4,6 +4,7 @@ import { PageBreadcrumb } from '../../component/breadcrumb/Breadcrumb.comp'
 import { SearchForm } from '../../component/search-form/SearchForm.comp'
 import { Tablecomp } from '../../component/table/Table.comp'
 import ticket from "../../assets/data/dummy-ticket.json"
+import { Link } from 'react-router-dom'
 
 
 
@@ -49,7 +50,9 @@ const {value}=e.target
        </Row>
        <Row className="mt-4">
          <Col>
+         <Link to ="/add-ticket">
            <Button variant= "info" > add New ticket</Button>
+           </Link>
          </Col>
          <Col className="text-right">
              <SearchForm  onhandlechange={onhandlechange} str={str}  />
