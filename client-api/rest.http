@@ -1,0 +1,27 @@
+# #usersignup
+# POST http://localhost:3001/v1/user
+# Content-Type: application/json
+
+# {
+# "name":"konami",
+# "company":"facebook",
+# "address":"usa",
+# "phone":"745908",
+# "email":"ja4jslsa4@gmail.com",
+# "password":"majicpot"
+# }
+
+
+
+#usersignup
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+"email":"aijass4@gmail.com",
+"password":"majicpot"
+}
+
+
+
+
