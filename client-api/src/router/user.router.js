@@ -5,6 +5,8 @@ const{comparepassword }=require("../helper/bcrypt.helper")
 
 const {hashpassword}=require("../helper/bcrypt.helper");
 
+const {createaccessjwt, createRefreshjwt}=require("../helper/jwt.helper")   
+
 const router = express.Router();
 
 router.all("/", (req,res,next)=>{
@@ -80,7 +82,7 @@ router.post('/login',async(req,res)=>{
 
 
 
-    const userpassword= user._id? user.password:null
+    const userpassword= user&& user._id? user.password:null
 
     console.log(userpassword)
 
@@ -90,19 +92,25 @@ router.post('/login',async(req,res)=>{
     if(!userpassword)
        return  res.json({status: "invalid",messgae:"ur email or paswword is wrong"})
 
+              
+
+  
 
      const result =comparepassword(password,userpassword)
+
+     if(!result){
+
+        return  res.json({status: "invalid",messgae:"ur email or paswword is wrong"})
+     }
+        
+        const accessJWT= await createaccessjwt(user.email)
+
+      const RefreshJwt=await createRefreshjwt(user.email)
    
      
+      console.log(accessJWT)
 
-    res.json({status:"success", messgae:"Login successfully",result});
-    
-
-
-
-    
-
-    
+    res.json({status:"success", messgae:"Login successfully",accessJWT,RefreshJwt});
 
 
 
