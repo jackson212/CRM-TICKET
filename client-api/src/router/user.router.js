@@ -68,7 +68,7 @@ router.post('/login',async(req,res)=>{
 
     const {email,password}=req.body
 
-    console.log({email:email,password:password})
+    
 
     if(!email||!password){
 
@@ -84,7 +84,7 @@ router.post('/login',async(req,res)=>{
 
     const userpassword= user&& user._id? user.password:null
 
-    console.log(userpassword)
+    
 
 
 
@@ -103,13 +103,14 @@ router.post('/login',async(req,res)=>{
         return  res.json({status: "invalid",messgae:"ur email or paswword is wrong"})
      }
         
-        const accessJWT= await createaccessjwt(user.email)
+        const accessJWT= await createaccessjwt(user.email,`${user._id}`)
 
-      const RefreshJwt=await createRefreshjwt(user.email)
+        
+
+      const RefreshJwt=await createRefreshjwt(user.email,`${user._id}`)
    
      
-      console.log(accessJWT)
-
+      
     res.json({status:"success", messgae:"Login successfully",accessJWT,RefreshJwt});
 
 

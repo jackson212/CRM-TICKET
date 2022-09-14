@@ -45,6 +45,23 @@ password:{
     minlength:8,
     maxlength: 200,
     required: true,
+},
+refreshJWT:{
+
+    token:{
+        type:String,
+        maxlength:500,
+        default:""
+
+
+    },
+    addedAt:{
+        type:String,
+        required:true,
+        default:Date.now()
+
+
+    },
 }
 
 })
