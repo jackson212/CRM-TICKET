@@ -13,7 +13,7 @@
 
 
 
-#usersignup
+//usersignup
 POST http://localhost:3001/v1/user/login
 Content-Type: application/json
 
@@ -21,6 +21,11 @@ Content-Type: application/json
 "email":"jackson@gmail.com",
 "password":"majicpot"
 }
+
+
+# GET  http://localhost:3001/v1/user
+# Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImphY2tzb25AZ21haWwuY29tIiwiaWF0IjoxNjYzMjI2MDA4LCJleHAiOjE2NjMyMjY5MDh9.My61GQQ5L23TgJpJiwWdmeB9OHrIY3Fn4WUVomcMA3M
+
 
 
 

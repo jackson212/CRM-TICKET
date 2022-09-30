@@ -7,6 +7,10 @@ const {hashpassword}=require("../helper/bcrypt.helper");
 
 const {createaccessjwt, createRefreshjwt}=require("../helper/jwt.helper")   
 
+const {Autherization}=require("../middleware/authorization.middleware")
+
+const {getUserbyId}=require("../model/user/User.model")
+
 const router = express.Router();
 
 router.all("/", (req,res,next)=>{
@@ -118,6 +122,32 @@ router.post('/login',async(req,res)=>{
 
 
 });
+
+router.get('/',Autherization, async(req,res)=>{
+
+
+const _id=req.user_id
+
+const userprof=await  getUserbyId(_id)
+
+
+
+
+
+
+res.json({user: userprof})
+
+})
+
+
+
+
+router.post('/reset-password',(req,res)=>{
+
+ const {email} =req.body
+ res.json(email)
+
+})
 
 
 module.exports=router;

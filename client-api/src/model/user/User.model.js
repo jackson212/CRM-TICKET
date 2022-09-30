@@ -43,6 +43,38 @@ const insertUser= (userObj)=>{
 
 
     };
+    const getUserbyId=(_id)=>{
+      
+        return new Promise ((resolve,reject)=>{
+             
+            if(!_id)  
+            {
+            return false
+            }
+
+            try{
+
+            UserSchema.findOne({_id},(error,data)=>{
+
+                if(error){
+                   
+                 reject(error)
+                }
+
+                
+                resolve(data)
+
+            })
+ 
+            }catch{
+
+            reject(error)
+
+            }
+         });
+
+
+    };
 
 
     const  storeUserRefreshJWT=(_id,token)=>{
@@ -81,8 +113,8 @@ const insertUser= (userObj)=>{
 module.exports={
  insertUser,
  getUserByEMail,
- storeUserRefreshJWT
-
+ storeUserRefreshJWT,
+ getUserbyId
 }
 
 

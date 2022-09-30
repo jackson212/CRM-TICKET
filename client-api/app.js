@@ -35,11 +35,13 @@ app.use(bodyParser.json());
 //load router
 const  userRouter=require("./src/router/user.router")
 const  ticketRouter=require("./src/router/ticket.router")
+const  tokenRouter=require("./src/router/token.router")
 
 //use that router
 
 app.use("/v1/user",userRouter);
 app.use("/v1/ticket",ticketRouter);
+app.use("/v1/tokens",tokenRouter);
 
 
 //handle  error
