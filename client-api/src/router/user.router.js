@@ -11,6 +11,10 @@ const {Autherization}=require("../middleware/authorization.middleware")
 
 const {getUserbyId}=require("../model/user/User.model")
 
+const{setPasswordResetPin}=require("../model/resetPIn/ResetPin.model")
+
+const{randomPinNumber}=require("../util/randomGenerator")
+
 const router = express.Router();
 
 router.all("/", (req,res,next)=>{
@@ -142,12 +146,33 @@ res.json({user: userprof})
 
 
 
-router.post('/reset-password',(req,res)=>{
+
+
+router.post('/reset-password',async(req,res)=>{
 
  const {email} =req.body
- res.json(email)
+
+const user= await getUserByEMail(email);
+
+const passwordpin= await  randomPinNumber(6)
+
+
+
+if(user&& user._id){
+
+    const setpin= await setPasswordResetPin(user.email)
+
+   return  res.json(setpin)
+
+}
+
+res.json({status:"error", message:"u need to wait for few minute"})
 
 })
+
+
+
+
 
 
 module.exports=router;
