@@ -1,19 +1,16 @@
 const bcrypt  = require('bcrypt')
-const saltRounds = 10;
+const salt = 10;
 
 
-const hashpassword=(Plainpassword)=>{
- 
-    return new Promise((resolve)=>{
-
-     resolve(bcrypt.hashSync(Plainpassword, saltRounds));
-
-
+const hashpassword = (plainPassword) => {
+    return new Promise((resolve) => {
+      resolve(bcrypt.hashSync(plainPassword, salt));
     });
+  };
+
+  
 
 
-
-}
 
 const comparepassword =  (plainpass,passfromDB)=>{
 

@@ -11,9 +11,14 @@ const {Autherization}=require("../middleware/authorization.middleware")
 
 const {getUserbyId}=require("../model/user/User.model")
 
-const{setPasswordResetPin}=require("../model/resetPIn/ResetPin.model")
+const{setPasswordResetPin, getPinByEmail,deletePin}=require("../model/resetPIn/ResetPin.model")
 
-const{randomPinNumber}=require("../util/randomGenerator")
+const {emailProcessor}=require("../helper/email.helper")
+
+
+const {updatepassword}=require("../model/user/User.model")
+
+
 
 const router = express.Router();
 
@@ -104,7 +109,7 @@ router.post('/login',async(req,res)=>{
 
   
 
-     const result =comparepassword(password,userpassword)
+     const result = await comparepassword(password,userpassword)
 
      if(!result){
 
@@ -154,21 +159,94 @@ router.post('/reset-password',async(req,res)=>{
 
 const user= await getUserByEMail(email);
 
-const passwordpin= await  randomPinNumber(6)
+
 
 
 
 if(user&& user._id){
 
-    const setpin= await setPasswordResetPin(user.email)
+    const setpin= await setPasswordResetPin(email)
 
-   return  res.json(setpin)
+    console.log(setpin)
 
-}
+    await  emailProcessor({email, pin:setpin.pin,type:'request-new-pass'})
 
-res.json({status:"error", message:"u need to wait for few minute"})
+   
+
+   
+ 
+
+   
+
+        return res.json({
+            status: "success",
+            message:
+                "If the email is exist in our database, the password reset pin will be sent shortly.",
+        });
+    
+     
+    };
+    
+   
 
 })
+
+
+
+
+
+
+router.patch('/reset-password',async(req,res)=>{
+
+
+    const {email,pin,newpassword}=req.body
+
+    
+    const getpin= await  getPinByEmail(email,pin)
+    
+      if(getpin._id){
+
+        const DBdate=getpin.addedAt
+        const expiresIn=1
+
+        const expDate=DBdate.setDate(DBdate.getDate()+expiresIn)
+        
+
+
+        const today=new Date()
+          
+        if(today>expDate){
+
+            res.json({status:"error",message:"invalid pin or expired pin"})
+        }
+
+
+        const hashedpass= await  hashpassword(newpassword)
+        
+        
+         
+        const user = await updatepassword(email,hashedpass)
+
+       
+        if(user._id){
+           await  emailProcessor({email,type:'password-update-success'})
+
+           await deletePin(email,pin)
+           
+           return res.json({status:"succuss",message:"your password has been updated"})
+        }
+ 
+      }
+
+      res.json({status:"errro",message:"unable to  updated password"})
+
+
+
+})
+ 
+   
+
+  
 
 
 
