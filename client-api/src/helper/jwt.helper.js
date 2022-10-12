@@ -8,7 +8,7 @@ const createaccessjwt=async (email,user_id)=>{
 
     try{
          
-        const accessJWT = await jwt.sign({ email}, process.env.JWT_ACCESS_SECRET,{expiresIn:"1m"});
+        const accessJWT = await jwt.sign({ email}, process.env.JWT_ACCESS_SECRET,{expiresIn:"45m"});
      
 
         await setJWT(accessJWT,user_id)

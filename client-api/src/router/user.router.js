@@ -15,8 +15,10 @@ const{setPasswordResetPin, getPinByEmail,deletePin}=require("../model/resetPIn/R
 
 const {emailProcessor}=require("../helper/email.helper")
 
+const  {resetPassReqValidation,updatePassValidation} = require("../middleware/formValidation.middleware")
+const {updatepassword,storeUserRefreshJWT}=require("../model/user/User.model")
 
-const {updatepassword}=require("../model/user/User.model")
+const {deleteJWT}=require("../helper/redis.helper")
 
 
 
@@ -153,7 +155,7 @@ res.json({user: userprof})
 
 
 
-router.post('/reset-password',async(req,res)=>{
+router.post('/reset-password',resetPassReqValidation,async(req,res)=>{
 
  const {email} =req.body
 
@@ -196,7 +198,7 @@ if(user&& user._id){
 
 
 
-router.patch('/reset-password',async(req,res)=>{
+router.patch('/reset-password',updatePassValidation,async(req,res)=>{
 
 
     const {email,pin,newpassword}=req.body
@@ -244,9 +246,32 @@ router.patch('/reset-password',async(req,res)=>{
 
 })
  
-   
+    //user logout 
 
-  
+router.delete('/logout',Autherization, async(req,res)=>{
+
+
+
+    const token= req.headers['authorization']
+
+    const id=req.user_id
+       
+    deleteJWT(token) 
+    
+    
+    const result =await storeUserRefreshJWT(id,'')
+
+     
+    if(result._id){
+
+        res.json({status:"succes" ,message:" logged out success fuly"})
+     }
+
+   
+    res.json({status:"error",message:"can't log out"})
+    
+    })
+    
 
 
 

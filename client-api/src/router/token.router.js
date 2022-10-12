@@ -7,6 +7,8 @@ const router = express.Router();
 router.get("/", async(req,res,next)=>{
     const token= req.headers['authorization']
 
+    console.log(token)
+
     
      const decode = await  verifyRefreshJWT(token)
      // console.log(decode.email)
