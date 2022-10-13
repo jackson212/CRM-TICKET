@@ -56,9 +56,9 @@ refreshJWT:{
 
     },
     addedAt:{
-        type:String,
+        type:Date,
         required:true,
-        default:""
+        default:Date.now(),
 
 
     },
