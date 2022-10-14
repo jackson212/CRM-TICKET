@@ -9,10 +9,8 @@ const Autherization = async(req,res,next)=>{
 
      
     const decode= await verifyJWT(token)
-    console.log(decode)
-
+   
      console.log(decode.email)
-     
 
 
     if(decode.email){
@@ -20,7 +18,7 @@ const Autherization = async(req,res,next)=>{
      
      const user_id= await getJWT(token)
 
-     console.log(user_id)
+     
 
      if(!user_id){
         return res.status(403).json({message:"cant enter"})
