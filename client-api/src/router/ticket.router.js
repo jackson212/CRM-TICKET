@@ -66,7 +66,7 @@ router.post('/',createNewTicketValidation ,Autherization,async(req,res)=>{
   }
 
 
-res.json({Message:"todo create a new ticket"})
+res.json({Message:"todo create a new ticket" })
 
 })
 

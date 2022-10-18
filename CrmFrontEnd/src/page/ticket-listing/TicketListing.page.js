@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react'
+
+import { useDispatch } from "react-redux"
+
+import {fetchAllTickets} from './TicketAction'
+
 import { Container,Row,Col, Button, Table } from 'react-bootstrap'
 import { PageBreadcrumb } from '../../component/breadcrumb/Breadcrumb.comp'
 import { SearchForm } from '../../component/search-form/SearchForm.comp'
@@ -9,36 +14,22 @@ import { Link } from 'react-router-dom'
 
 
 export const TicketListing = () => {
+
+  const dispatch =useDispatch()
+
     
 
-    const[str , setstr]=useState("")
-    const[disTic , setticket]=useState(ticket)
+    // const[str , setstr]=useState("")
+   
 
    useEffect(()=>{
+
+    dispatch(fetchAllTickets());
        
-   },[str,disTic])
-
- const searchTicket =strr=>{
-
-  const displayticket=ticket.filter((row)=>{
-     
-    
-    return row.sub.includes(strr.toLowerCase())
+   },[dispatch])
 
 
-});
-   console.log(displayticket)
-  setticket(displayticket)
 
- }
-
-const onhandlechange=e=>{
-const {value}=e.target
-
- setstr(value)
- searchTicket(value)
-
-}
   return (
      
     <Container>
@@ -55,7 +46,7 @@ const {value}=e.target
            </Link>
          </Col>
          <Col className="text-right">
-             <SearchForm  onhandlechange={onhandlechange} str={str}  />
+             <SearchForm   />
          </Col>
 
 
@@ -66,7 +57,7 @@ const {value}=e.target
        
        <Row>
          <Col>
-           <Tablecomp ticket={disTic}/>
+           <Tablecomp/>
          </Col>
 
        </Row>

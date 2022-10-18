@@ -1,9 +1,19 @@
 import React from 'react'
+
+import { useSelector } from 'react-redux'
+
 import {Table} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-export const Tablecomp = ({ticket}) => {
-  
+export const Tablecomp = () => {
+
+  const {searchTicketList,isLoading,error}=useSelector((state)=>state.tickets)
+   
+  if(isLoading) return <h1> Loading...</h1>
+
+  if(error)
+   return  <h3>error 404 ..ticket not found</h3>
+
   return (
     
      <Table striped bordered hover>
@@ -20,17 +30,17 @@ export const Tablecomp = ({ticket}) => {
           </thead>
 
           <tbody>
-               { ticket.length ? ticket.map((row) =>(
+               { searchTicketList.length ? searchTicketList.map((row) =>(
                  
-                 <tr key={row.id}> 
-                   <td>{row.id}</td>
+                 <tr key={row._id}> 
+                   <td>{row._id}</td>
                    <td>
-                   <Link to ={`/ticket/${row.id}`}> 
+                   <Link to ={`/ticket/${row._id}`}> 
                    {row.subject}
                    </Link>
                    </td>
                    <td>{row.status}</td>
-                   <td>{row.addededat}</td>
+                   <td>{row.openAt}</td>
                </tr>
                 ) ) : <tr> 
                       <td colSpan="4" className="text-center"> its empty </td>

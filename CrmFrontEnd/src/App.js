@@ -1,3 +1,4 @@
+import React from 'react';
 import PrivateRoute from './component/privaterouter/PrivateRoute.comp'
 import {DefaultLayout} from './Layout/Default.Layout'
 import { Dashboard } from './page/dashboard/dashboard.comp';

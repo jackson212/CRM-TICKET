@@ -8,7 +8,7 @@ export const AddTicketForm = ({handleOnchange, handleOnSubmit,sub}) => {
     return (
 
          
-    <div className="jumbotron" className="add-ticket"> 
+    <div className="jumbotron" clasName="add-ticket"> 
      
      <Form autoComplete="off" onSubmit={handleOnSubmit}>
      <Form.Group as ={Row}>

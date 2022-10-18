@@ -1,8 +1,25 @@
 import React from 'react'
 import { Col, Form, Row } from 'react-bootstrap'
 
-export const SearchForm = ({onhandlechange,str}) => {
-    console.log(str)
+import { useDispatch } from 'react-redux'
+import {filterSearchTicket} from'../../page/ticket-listing/TicketAction'
+
+export const SearchForm = () => {
+
+
+const dispatch =useDispatch()
+
+    
+   const onhandlechange= e =>{
+
+   const {value}= e.target
+
+   
+
+
+   dispatch(filterSearchTicket(value))
+
+   }
     return (
      
     <Form>
