@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import "./entry.style.css"
 import {Login} from "../../component/login/Login.comp"
-import { Forgot } from '../../component/login/forgot.comp';
+import { Forgot } from '../../component/password-reset/forgot.comp';
  
 export const   Entry = () => {
   

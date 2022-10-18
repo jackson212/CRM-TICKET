@@ -53,7 +53,7 @@ export const Login = ({handleOnchange,password,handleOnsubmit,email,loadonn}) =>
       </Row>
       <Row>
           <Col>
-             <a href ="!#"  onClick={()=> loadonn('reset')}>forget password</a>         
+             <a href ="#"  onClick={()=> loadonn('reset')}>forget password</a>         
           </Col>
       </Row>
     </Container>

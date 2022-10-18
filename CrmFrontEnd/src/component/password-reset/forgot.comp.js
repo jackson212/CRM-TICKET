@@ -38,7 +38,7 @@ export const Forgot = ({handleOnchange,email,handleOnsubmit, loadonn}) => {
       </Row>
       <Row>
           <Col>
-             <a href ="!#" onClick={()=>loadonn("login")}> Log back</a>         
+             <a href ="#" onClick={()=>loadonn("login")}> Log back</a>         
           </Col>
       </Row>
     </Container>
