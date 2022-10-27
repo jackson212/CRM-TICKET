@@ -41,7 +41,7 @@ const  tokenRouter=require("./src/router/token.router")
 
 app.use("/v1/user",userRouter);
 app.use("/v1/ticket",ticketRouter);
-app.use("/v1/tokens",tokenRouter);
+app.use("/v1/token",tokenRouter);
 
 
 //handle  error

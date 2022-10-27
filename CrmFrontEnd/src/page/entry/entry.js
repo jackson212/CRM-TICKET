@@ -4,68 +4,23 @@ import {Login} from "../../component/login/Login.comp"
 import { Forgot } from '../../component/password-reset/forgot.comp';
  
 export const   Entry = () => {
-  
-  const [email,setEmail]=useState("")
-  const [password,setPassword]=useState("")
-  
   const [pageload,setload]=useState("login")
+  
 
 
-  const handlePageload=(load)=>{
+const handlePageload=(load)=>{
       
-    setload(load);
-        
-
-  }
-
-
-  const handleOnchange=e=>{
-
-     const {name,value}=e.target;
-
-      switch(name){
-
-        case "email":
-          setEmail(value);
-          break;
-        case "password":
-          setPassword(value);
-          break;
-
-
-      }
+  setload(load);
+      
 
 }
 
-
-
-
-
-
-const handleOnsubmit=(e)=>{
-
-   e.preventDefault();
-
-   if(!email|| !password){
-
-  return alert("fill up all the form")
-
-   }else{
-   console.log(email,password)
-   }
-};
 
 const handleOnsubmitUpdate=(e)=>{
 
   e.preventDefault();
 
-  if(!email){
-
- return alert("fill up all the form")
-
-  }else{
-  console.log(email)
-  }
+ 
 };
 
 
@@ -76,17 +31,15 @@ const handleOnsubmitUpdate=(e)=>{
   <div className="jumbotron">
 
   { pageload=="login"&&(
-    <Login handleOnchange={handleOnchange}
-      email={email}
-     
-      password={password}
-      handleOnsubmit={handleOnsubmit}
+    <Login 
       loadonn={handlePageload}/>
      
   )}
         { pageload=="reset"&&(
-    <Forgot handleOnchange={handleOnchange}
-      email={email} 
+    <Forgot 
+    
+    // handleOnchange={handleOnchange}
+    //   email={email} 
       handleOnsubmit={handleOnsubmitUpdate}
       loadonn={handlePageload}/>
       

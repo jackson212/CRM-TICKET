@@ -142,11 +142,18 @@ const _id=req.user_id
 const userprof=await  getUserbyId(_id)
 
 
+ const{name,email}=userprof
 
 
 
+res.json({
 
-res.json({user: userprof})
+ user:{
+  _id,
+ email,
+ name
+ }
+})
 
 })
 

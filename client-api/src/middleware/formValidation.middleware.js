@@ -59,7 +59,7 @@ const replyTicketMessageValidation = (req, res, next) => {
 
 	console.log(req.body);
 	const value = schema.validate(req.body);
-
+     console.log(value)
 	if (value.error) {
 		return res.json({ status: "error", message: value.error.message });
 	}
@@ -67,7 +67,7 @@ const replyTicketMessageValidation = (req, res, next) => {
 	next();
 };
 
-const newUserValidation = (req, res, next) => {
+const newUserValidation = (req, res, next) => {s
 	const schema = Joi.object({
 		name: shortStr.required(),
 		company: shortStr.required(),

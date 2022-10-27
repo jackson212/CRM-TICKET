@@ -3,12 +3,25 @@ import { Nav, Navbar } from 'react-bootstrap'
 import logo from "../../assets/img/logo.jpg";
 import { LinkContainer } from "react-router-bootstrap";
 
+import {userLogout} from "../../api/userApi"
+
 import { useNavigate } from 'react-router-dom';
 export const Header = () => {
 
   let navigate = useNavigate();
 
-;
+ const logmeOut=()=>{
+    
+  sessionStorage.removeItem('accessJWT')
+ 
+  localStorage.removeItem('crmSite')
+  
+  // userLogout()
+
+  navigate('/')
+
+
+ }
 
 
   return (
@@ -36,7 +49,7 @@ export const Header = () => {
             <Nav.Link  >Tickets</Nav.Link>
             </LinkContainer>
           
-            <Nav.Link  onClick={()=>navigate("/")} >Logout</Nav.Link>
+            <Nav.Link  onClick={()=>logmeOut()} >Logout</Nav.Link>
           
             
            

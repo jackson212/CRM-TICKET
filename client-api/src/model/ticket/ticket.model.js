@@ -81,83 +81,45 @@ const insertTicket=(ticketObj)=>{
           
             }
     
-            const updateClientReply=({id,message,sender})=>{
-   
-                return new Promise ((resolve,reject)=>{
-            
-                   
-                    try {
-            
-                     
-                        TicketSchema
-                        .findOneAndUpdate(
-                            { id },
-                            {
-
-                             status:"pending operator responce",
-
-                             $push:{
-                                 
-                                conversation:{message,sender}
-
-                             }
-
-                            },
-                            {new:true} //weather you need to return the   updated value
-                            
-                            ) 
-                        .then((data)=>{
-                            resolve(data)}).catch((error)=>{
-                                reject(error)
-                            })
-            
-                    
-                    } catch (error) {
-            
-                        reject(error)
-                        
-                    }
-               
-                   })
+            const updateClientReply = ({ _id, message, sender }) => {
+                return new Promise((resolve, reject) => {
+                  try {
+                    TicketSchema.findOneAndUpdate(
+                      { _id },
+                      {
+                        status: "Pending operator response",
+                        $push: {
+                          conversation: { message, sender },
+                        },
+                      },
+                      { new: true }
+                    )
+                      .then((data) => resolve(data))
+                      .catch((error) => reject(error));
+                  } catch (error) {
+                    reject(error);
+                  }
+                });
+              };
               
-                }
 
-
-                const updateStatusClose=({id,user_id})=>{
-   
-                    return new Promise ((resolve,reject)=>{
-                
-                       
-                        try {
-                
-                         
-                            TicketSchema
-                            .findOneAndUpdate(
-                                { id,user_id },
-                                {
-    
-                                 status:"close",
-                                
-                                },
-                                {new:true} //weather you need to return the   updated value
-                                
-                                ) 
-                            .then((data)=>{
-                                resolve(data)}).catch((error)=>{
-                                    reject(error)
-                                })
-                
-                        
-                        } catch (error) {
-                
-                            reject(error)
-                            
-                        }
-                   
-                       })
-                  
-                    }
-
+              const updateStatusClose = ({ _id, clientId }) => {
+                return new Promise((resolve, reject) => {
+                  try {
+                    TicketSchema.findOneAndUpdate(
+                      { _id, clientId },
+                      {
+                        status: "Closed",
+                      },
+                      { new: true }
+                    )
+                      .then((data) => resolve(data))
+                      .catch((error) => reject(error));
+                  } catch (error) {
+                    reject(error);
+                  }
+                });
+              };
                     const deleteTicket=({id,user_id})=>{
    
                         return new Promise ((resolve,reject)=>{

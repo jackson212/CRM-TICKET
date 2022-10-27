@@ -139,50 +139,39 @@ router.get('/:id',Autherization,async(req,res)=>{
 
 })
 
-router.put('/:id',replyTicketMessageValidation,Autherization,async(req,res)=>{
+router.put(
+  "/:_id",
+  replyTicketMessageValidation,
+  Autherization,
+  async (req, res) => {
+    try {
 
+      const { message, sender } = req.body;
 
+      
+      const { _id } = req.params;
 
-  try {
-    
-     const {message,sender}=req.body
-    
-     const id=req.params.id 
+      console.log(_id)
+      const clientId = req.userId;
 
-     
-    
-    
-
-    const user_id=req.user_id 
-   
-   
- 
-    const result =await updateClientReply({id,message,sender})
-
-
-
-
-   
-
- if(result._id){
-
-  return res.json({status : "success", Message:"successfully  message updated"})
-  
- 
- }
- res.json({status : "error",  message:"unable to update"})
-
-  } catch (error) {
- 
-      console.log(error)  
-  
-
+      const result = await updateClientReply({ _id, message, sender });
+      console.log(result._id)
+      if (result._id) {
+        return res.json({
+          status: "success",
+          message: "your message updated",
+        });
+      }
+      res.json({
+        status: "error",
+        message: "Unable to update your message please try again later",
+      });
+    } catch (error) {
+      res.json({ status: "error", message: error.message });
+    }
   }
+);
 
-
-
-
-})
 
 
 

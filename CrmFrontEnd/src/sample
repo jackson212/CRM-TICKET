@@ -1,63 +1,60 @@
 import React from 'react'
+import { Nav, Navbar } from 'react-bootstrap'
+import logo from "../../assets/img/logo.jpg";
+import { LinkContainer } from "react-router-bootstrap";
 
-import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
+export const Header = () => {
 
-import {Table} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+  let navigate = useNavigate();
 
-export const Tablecomp = () => {
+ const logmeOut=()=>{
+  sessionStorage.removeItem('accessJWT')
+    
+  navigate('/')
 
-  const { searchTicketList,isLoading,error}=useSelector((state)=>state. searchTickets)
-   
-  if(isLoading) return <h1> Loading...</h1>
 
-  if(error)
-   return  <h3>error 404 ..ticket not found</h3>
+ }
+
 
   return (
-    
-     <Table striped bordered hover>
-          <thead>
-            <tr>
-                <th>#</th>
-                <th>subject</th>
-                <th>status</th>
-                <th>opened data</th>
+     <Navbar
+      collapseOnSelect
+      bg="info"
+      varient="dark"
+      expand="md"
+     
+     >
 
-            </tr>
+       <Navbar.Brand>
+        <img  src={logo} alt="logo" width="50px"/>
+
+       </Navbar.Brand>
+       <Navbar.Toggle aria-controls="basic-navbar-nav" />
+     
+       <Navbar.Collapse id="basic-navbar-nav">
+         <Nav className="ms-auto">
+
+            <LinkContainer to ="/dashboard"> 
+            <Nav.Link  >dashboard</Nav.Link>
+            </LinkContainer>
+            <LinkContainer  to ="/tickets">
+            <Nav.Link  >Tickets</Nav.Link>
+            </LinkContainer>
+          
+            <Nav.Link  onClick={()=>logmeOut()} >Logout</Nav.Link>
+          
+            
            
-
-          </thead>
-
-          <tbody>
-               {  searchTicketList.length ? searchTicketList.map((row) =>(
-                 
-                 <tr key={row._id}> 
-                   <td>{row._id}</td>
-                   <td>
-                   <Link to ={`/ticket/${row._id}`}> 
-                   {row.subject}
-                   </Link>
-                   </td>
-                   <td>{row.status}</td>
-                   <td>{row.openAt}</td>
-               </tr>
-                ) ) : <tr> 
-                      <td colSpan="4" className="text-center"> its empty </td>
-                </tr>
-            }
-                   
                
+         </Nav>
+       
+             
+           
+        
 
-
-          </tbody>
-
-
-     </Table>
-
-      
-
-
-
+      </Navbar.Collapse>
+     </Navbar>
   )
 }
+

@@ -1,11 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
 const initialState = {
   tickets: [],
   isLoading: false,
   error: "",
   searchTicketList:[],
-
+  replyTicketError:"",
+  selectedTicket:{},
+  replyMsg:{}
 
 };
 
@@ -32,47 +37,47 @@ const ticketListSlice = createSlice({
         return row.subject.toLowerCase().includes(payload.toLowerCase());
       });
     },
-    // fetchSingleTicketLoading: (state) => {
-    //   state.isLoading = true;
-    // },
-    // fetchSingleTicketSuccess: (state, { payload }) => {
-    //   state.selectedTicket = payload;
-    //   state.isLoading = false;
-    //   state.error = "";
-    // },
-    // fetchSingleTicketFail: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // },
-    // replyTicketLoading: (state) => {
-    //   state.isLoading = true;
-    // },
-    // replyTicketSuccess: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = "";
-    //   state.replyMsg = payload;
-    // },
-    // replyTicketFail: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.replyTicketError = payload;
-    // },
-    // closeTicketLoading: (state) => {
-    //   state.isLoading = true;
-    // },
-    // closeTicketSuccess: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = "";
-    //   state.replyMsg = payload;
-    // },
-    // closeTicketFail: (state, { payload }) => {
-    //   state.isLoading = false;
-    //   state.error = payload;
-    // },
-    // resetResponseMsg: (state) => {
-    //   state.isLoading = false;
-    //   state.replyTicketError = "";
-    //   state.replyMsg = "";
-    // },
+    fetchSingleTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    fetchSingleTicketSuccess: (state, { payload }) => {
+      state.selectedTicket = payload;
+      state.isLoading = false;
+      state.error = "";
+    },
+    fetchSingleTicketFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    replyTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    replyTicketSuccess: (state,{payload} ) => {
+      state.isLoading = false;
+      state.error = "";
+      state.replyMsg = payload;
+    },
+    replyTicketFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.replyTicketError = payload;
+    },
+    closeTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    closeTicketSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = "";
+      state.replyMsg = payload;
+    },
+    closeTicketFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
+    resetResponseMsg: (state) => {
+      state.isLoading = false;
+      state.replyTicketError = "";
+      state.replyMsg = "";
+    },
   },
 });
 
@@ -82,6 +87,19 @@ export const {
   fetchTicketLoading,
   fetchTicketSuccess,
   fetchTicketFail,
-searchTickets} = actions;
+searchTickets,
+fetchSingleTicketFail,
+fetchSingleTicketLoading,
+fetchSingleTicketSuccess,
+replyTicketFail,
+replyTicketSuccess,
+replyTicketError,
+replyTicketLoading,
+resetResponseMsg,
+closeTicketLoading,
+closeTicketSuccess,
+closeTicketFail
+
+} = actions;
 
 export default reducer;
